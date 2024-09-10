@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const carrinhoConteudo = document.getElementById('carrinho-conteudo');
     const carrinho = {};
-    let valorFrete = 0; /
+    let valorFrete = 0;
 
     function atualizarCarrinho() {
         carrinhoConteudo.innerHTML = '';
@@ -69,7 +69,59 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.getElementById('confirmar-pagamento').addEventListener('click', () => {
-        alert('Compra finalizada');
+        const bandeira = document.getElementById('bandeira-cartao').value;
+        const numeroCartao = document.getElementById('numero-cartao').value;
+        const nomeCartao = document.getElementById('nome-cartao').value;
+        const dataValidade = document.getElementById('data-validade').value;
+        const cvv = document.getElementById('cvv').value;
+
+        document.getElementById('numero-cartao').addEventListener('input', function() {
+            this.value = this.value.replace(/\s+/g, ''); // Remove todos os espaços
+        });
+        
+    
+        // Validação do nome do titular
+        const nomeRegex = /^[A-Z\s]{1,19}$/;
+        const nomeValido = nomeRegex.test(nomeCartao.toUpperCase());
+        if (!nomeValido) {
+            alert('O nome do titular deve conter apenas letras e no máximo 19 caracteres.');
+            return;
+        }
+    
+        // Validação do número do cartão baseado na bandeira
+        let cartaoRegex;
+        if (bandeira === 'visa') {
+            cartaoRegex = /^4[0-9]{15}$/;
+        } else if (bandeira === 'mastercard') {
+            cartaoRegex = /^5[1-5]{1}[0-9]{14}$/;
+        } else if (bandeira === 'amex') {
+            cartaoRegex = /^3[47][0-9]{13}$/;
+        } else {
+            alert('Por favor, selecione uma bandeira do cartão.');
+            return;
+        }
+    
+        if (!cartaoRegex.test(numeroCartao)) {
+            alert('Número do cartão inválido para a bandeira selecionada.');
+            return;
+        }
+    
+        // Validação da data de validade (formato MM/AA)
+        const dataValidadeRegex = /^(0[1-9]|1[0-2])\/[0-9]{2}$/;
+        if (!dataValidadeRegex.test(dataValidade)) {
+            alert('Data de validade inválida. Utilize o formato MM/AA.');
+            return;
+        }
+    
+        // Validação do CVV
+        const cvvRegex = /^[0-9]{3}$/;
+        if (!cvvRegex.test(cvv)) {
+            alert('CVV inválido. Deve conter exatamente 3 dígitos.');
+            return;
+        }
+    
+        // Se todas as validações passarem
+        alert('Compra finalizada com sucesso!');
     });
 });
 function imageOn(img) {
@@ -79,3 +131,6 @@ function imageOn(img) {
 function imageOff(img) {
     img.src = "urubu-pix-logo.png";
 }
+
+
+
