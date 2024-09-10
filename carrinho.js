@@ -48,3 +48,10 @@
         });
     });
 });
+
+function imageOff(imagem){
+    imagem.src="urubu-pix-logo.png";
+   }
+   function imageOn(imagem){
+    imagem.src="onMouse.png";
+   }
