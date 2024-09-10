@@ -79,42 +79,53 @@
                     <div class="carrinho-cabecalho-item">Quantidade</div>
                     <div class="carrinho-cabecalho-item">Preço</div>
                 </div>
-                <div id="carrinho-conteudo"></div> <!-- Adicionado para o conteúdo do carrinho -->
+                <div id="carrinho-conteudo"></div>
             </div>
         </div>
 
-        <div class="pagamento-container">
-            <h1>Pagamento</h1>
-            <form id="form-pagamento">
-                <div class="form-group">
-                    <label for="nomeCartao">Nome do Titular:</label>
-                    <input type="text" id="nomeCartao" maxlength="30" required>
-                </div>
+        <div class="metodos-pagamento-container">
+            <h2>Métodos de Pagamento</h2>
+            <div class="radio-group">
+                <label><input type="radio" name="pagamento" value="cartao"> Cartão</label>
+                <label><input type="radio" name="pagamento" value="pix"> Pix</label>
+                <label><input type="radio" name="pagamento" value="boleto"> Boleto</label>
+            </div>
         
-                <div class="form-group">
-                    <label for="numeroCartao">Número do Cartão:</label>
-                    <input type="text" id="numeroCartao" maxlength="16" required>
-                </div>
-        
-                <div class="form-group">
-                    <label for="cvv">Código de Segurança:</label>
-                    <input type="text" id="cvv" maxlength="3" required>
-                </div>
-        
-                <div class="form-group">
-                    <label for="bandeira">Bandeira do Cartão:</label>
-                    <select id="bandeira" name="bandeira" required>
-                        <option value="">Selecione uma bandeira</option>
+                <div class="form-group form-cartao">
+                    <h2>Dados do Cartão</h2>
+                    <br>
+                    <h4>Bandeira do cartão</h4>
+                    <select id="bandeira-cartao">
+                        <option value="">Selecione a bandeira</option>
                         <option value="visa">Visa</option>
-                        <option value="mastercard">Mastercard</option>
+                        <option value="mastercard">MasterCard</option>
                         <option value="amex">American Express</option>
                     </select>
+                    <h4>Número do cartão</h4>
+                    <input type="text" id="numero-cartao" placeholder="Número do Cartão" maxlength="19" pattern="\d{13,19}" title="Número do cartão deve ter entre 13 e 19 dígitos">
+                    <h4>Nome no cartão</h4>
+                    <input type="text" id="nome-cartao" placeholder="Nome no Cartão" maxlength="30">
+                    <h4>Data de validade (Mês/Ano)</h4>
+                    <input type="text" id="data-validade" placeholder="MM/AA" maxlength="5" pattern="\d{2}/\d{2}" title="Data deve estar no formato MM/AA">
+                    <h4>CVV</h4>
+                    <input type="text" id="cvv" placeholder="CVV" maxlength="3" pattern="\d{3}" title="CVV deve ter 3 dígitos">
                 </div>
+
+            <div class="form-group form-pix">
+                <h3>Pagamento via Pix</h3>
+                <img src="qrcode.png" alt="QR Code">
+            </div>
         
-                <button type="submit">Confirmar Pagamento</button>
-            </form>
+            <div class="form-group form-boleto">
+                <h3>Pagamento via Boleto</h3>
+                <img src="codigodebarras.png" alt="Código de Barras">
+            </div>
+
+            <div class="confirmar-pagamento-container">
+                <button id="confirmar-pagamento" type="button">Confirmar Pagamento</button>
+            </div>
+
         </div>
-        
-    <script src="js/script.js"></script> <!-- Adicione o script JavaScript -->
+    <script src="pagamento.js"></script> 
 </body>
 </html>
