@@ -74,10 +74,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const nomeCartao = document.getElementById('nome-cartao').value;
         const dataValidade = document.getElementById('data-validade').value;
         const cvv = document.getElementById('cvv').value;
-
-        document.getElementById('numero-cartao').addEventListener('input', function() {
-            this.value = this.value.replace(/\s+/g, ''); // Remove todos os espaços
-        });
         
     
         // Validação do nome do titular
