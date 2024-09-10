@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const carrinhoConteudo = document.getElementById('carrinho-conteudo');
     const carrinho = {};
-    let valorFrete = 0; // Variável para armazenar o valor do frete
+    let valorFrete = 0; /
 
     function atualizarCarrinho() {
         carrinhoConteudo.innerHTML = '';
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelector('.cep-container button').addEventListener('click', () => {
         alert('CEP válido');
-        valorFrete = 100; // Define o valor do frete
+        valorFrete = 100; 
         atualizarCarrinho();
     });
 
@@ -72,11 +72,10 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('Compra finalizada');
     });
 });
-// carrinho.js
 function imageOn(img) {
-    img.src = "onMouse.png"; // Imagem quando o mouse está sobre o elemento
+    img.src = "onMouse.png";
 }
 
 function imageOff(img) {
-    img.src = "urubu-pix-logo.png"; // Imagem padrão
+    img.src = "urubu-pix-logo.png";
 }
