@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function() {
     // Cadastro
-    const formCadastro = document.querySelector('form[action="login.html"]'); 
+    const formCadastro = document.querySelector('form[action="index.html"]'); 
     if (formCadastro) {
         formCadastro.addEventListener('submit', function(event) {
             const senha = document.getElementById('senha').value;
@@ -37,7 +37,6 @@ document.addEventListener("DOMContentLoaded", function() {
             };
 
             
-
             // Salvar os dados no localStorage (converter para string JSON)
             localStorage.setItem('dadosUsuario', JSON.stringify(dadosUsuario));
 
