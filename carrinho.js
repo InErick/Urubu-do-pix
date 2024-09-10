@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+                document.addEventListener('DOMContentLoaded', () => {
     const carrinhoConteudo = document.getElementById('carrinho-conteudo');
     const carrinho = {};
 
