@@ -1,6 +1,7 @@
-                document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     const carrinhoConteudo = document.getElementById('carrinho-conteudo');
     const carrinho = {};
+    let valorFrete = 0; // Variável para armazenar o valor do frete
 
     function atualizarCarrinho() {
         carrinhoConteudo.innerHTML = '';
@@ -18,6 +19,19 @@
             carrinhoConteudo.appendChild(item);
 
             valorTotal += dados.preco * dados.quantidade;
+        }
+
+        if (valorFrete > 0) {
+            const itemFrete = document.createElement('div');
+            itemFrete.className = 'carrinho-item';
+            itemFrete.innerHTML = `
+                <div>Frete</div>
+                <div></div>
+                <div>R$ ${valorFrete.toFixed(2)}</div>
+            `;
+            carrinhoConteudo.appendChild(itemFrete);
+
+            valorTotal += valorFrete;
         }
 
         const totalItem = document.createElement('div');
@@ -47,11 +61,22 @@
             atualizarCarrinho();
         });
     });
-});
 
-function imageOff(imagem){
-    imagem.src="urubu-pix-logo.png";
-   }
-   function imageOn(imagem){
-    imagem.src="onMouse.png";
-   }
+    document.querySelector('.cep-container button').addEventListener('click', () => {
+        alert('CEP válido');
+        valorFrete = 100; // Define o valor do frete
+        atualizarCarrinho();
+    });
+
+    document.getElementById('confirmar-pagamento').addEventListener('click', () => {
+        alert('Compra finalizada');
+    });
+});
+// carrinho.js
+function imageOn(img) {
+    img.src = "onMouse.png"; // Imagem quando o mouse está sobre o elemento
+}
+
+function imageOff(img) {
+    img.src = "urubu-pix-logo.png"; // Imagem padrão
+}
